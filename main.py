@@ -9,7 +9,7 @@ def create_user(first_name, last_name, username, password):
 
 def show_options():
     print("Please choose an option to continue: ")
-    print("1. Create Account\n2. Login\n3. Display Account\n4. Exit")
+    print("1. Create Account\n2. Login\n3. Display Accounts\n4. Exit")
 
 
 def create_account_option():
@@ -31,13 +31,14 @@ def create_account_option():
 
     return user
 
-def show_login_options():
+def user_login():
     print("Enter your details to login")
     print("Enter your username .....")
     username = input()
     print("Enter password .....")
     user_password = input()
 
+    return User.login(username, user_password)
 
 def display_logged_in_menu():
     print("Please select an option")
@@ -97,6 +98,21 @@ def main():
                         break
 
             elif choice == 2:
+                if user_login():
+                    print(f"Welcome to Password Locker")
+                    while True:
+                        logout = display_logged_in_menu()
+                        if logout:
+                            show_options()
+                            break
+                else:
+                    print("Account does not exist")
+                    show_options()
+
+            elif choice == 3:
+                print("Registered user accounts")
+                print(User.display_user_accounts())
+                show_options()
 
 
             elif choice == 4:

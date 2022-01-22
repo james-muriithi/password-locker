@@ -14,7 +14,8 @@ class User:
     def delete_user(self):
         User.user_accounts.remove(self)
 
-    def login(self, username, password):
+    @classmethod
+    def login(cls, username, password):
         for user in cls.user_accounts:
             if user.username == username and user.password == password:
                 return True
@@ -32,7 +33,7 @@ class User:
         User.user_accounts.append(self)
 
     @classmethod
-    def get_user_accounts(cls):
+    def display_user_accounts(cls):
         return cls.user_accounts
 
     def __repr__(self):
