@@ -17,9 +17,15 @@ class Credetials:
         Credetials.user_passwords.remove(self)
 
     @classmethod
+    def platform_exists(cls, platform):
+        for platform_credentials in cls.user_passwords:
+            return True if platform_credentials.platform == platform else False
+
+    @classmethod
     def find_platform_credentials(cls, platform):
         for platform_credentials in cls.user_passwords:
-            return platform_credentials if platform_credentials.platform == platform else False
+            if platform_credentials.platform == platform:
+                return platform_credentials
 
     @classmethod
     def display_all_credentials(cls):
@@ -30,4 +36,7 @@ class Credetials:
         random_string = string.ascii_letters + string.digits
         random_string = random.sample(random_string, password_length)
         return "".join(random_string)
+
+    def __repr__(self):
+        return f"Platform: {self.platform} Username: {self.username} Password: {self.password}"
 

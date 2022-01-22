@@ -14,6 +14,13 @@ class User:
     def delete_user(self):
         User.user_accounts.remove(self)
 
+    def login(self, username, password):
+        for user in cls.user_accounts:
+            if user.username == username and user.password == password:
+                return True
+            return False
+
+
     @classmethod
     def find_user(cls, username):
         for user in cls.user_accounts:
