@@ -72,6 +72,7 @@ def display_logged_in_menu():
         if Credetials.platform_exists(delete_patform):
             plat = Credetials.find_platform_credentials(delete_patform)
             plat.delete_platform_credentials()
+            print(f"platform {delete_patform} deleted successfully")
         else:
             print(f"platform {delete_patform} does not exist!")
 
