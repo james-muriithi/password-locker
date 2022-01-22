@@ -1,3 +1,6 @@
+import string
+import random
+
 class Credetials:
     user_passwords = []
 
@@ -21,4 +24,10 @@ class Credetials:
     @classmethod
     def display_all_credentials(cls):
         return cls.user_passwords
+
+    @staticmethod
+    def gerneratePassword(password_length=6):
+        random_string = string.ascii_letters + string.digits
+        random_string = random.sample(random_string, password_length)
+        return "".join(random_string)
 

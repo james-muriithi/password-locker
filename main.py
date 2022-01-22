@@ -1,9 +1,6 @@
+#!/usr/bin/env python3.6
 from user import User
+from credentials import Credetials
 
-user1 = User("James", "Muriithi", "james-muriithi", "password")
-user2 = User("James2", "Muriithi2", "james-muriithi2", "password")
-
-user1.save_user()
-user2.save_user();
-
-print(User.user_accounts)
+def create_user(first_name, last_name, username, password):
+    return User(first_name, last_name, username, password)
