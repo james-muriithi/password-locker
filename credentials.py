@@ -32,7 +32,7 @@ class Credetials:
         return cls.user_passwords
 
     @staticmethod
-    def gerneratePassword(password_length=6):
+    def gernerate_password(password_length=6):
         random_string = string.ascii_letters + string.digits
         random_string = random.sample(random_string, password_length)
         return "".join(random_string)

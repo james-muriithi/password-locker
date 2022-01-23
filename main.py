@@ -53,7 +53,7 @@ def show_password_options():
 
     else:
         length = int(input("Please provide the length of the password to be generated\n"))
-        password = Credetials.gerneratePassword(length)
+        password = Credetials.gernerate_password(length)
         print(f"The generated password is: {password}")
 
     return password
