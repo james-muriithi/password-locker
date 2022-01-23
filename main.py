@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.6
 from user import User
-from credentials import Credetials
+from credentials import Credentials
 
 
 def create_user(first_name, last_name, username, password):
@@ -52,8 +52,9 @@ def show_password_options():
         password = input()
 
     else:
-        length = int(input("Please provide the length of the password to be generated\n"))
-        password = Credetials.gernerate_password(length)
+        print("Please provide the length of the password to be generated")
+        length = int(input())
+        password = Credentials.gernerate_password(length)
         print(f"The generated password is: {password}")
 
     return password
@@ -73,14 +74,15 @@ def display_logged_in_menu():
 
         password = show_password_options()
 
-        creds = Credetials(platform, username, password)
+        creds = Credentials(platform, username, password)
         creds.save_platform_credentials()
 
         print(f"\n\nCredentials for {platform} saved successfully\n\n")
 
     elif choice == 2:
         print("-" * 20 + "Show all saved credentials" + "-"*20)
-        print(Credetials.display_all_credentials())
+        print(Credentials.display_all_credentials())
+        print("\n\n")
 
     elif choice == 3:
         print("-" * 20 + "Delete platform credentials" + "-"*20)
@@ -88,8 +90,8 @@ def display_logged_in_menu():
 
         delete_patform = input()
 
-        if Credetials.platform_exists(delete_patform):
-            plat = Credetials.find_platform_credentials(delete_patform)
+        if Credentials.platform_exists(delete_patform):
+            plat = Credentials.find_platform_credentials(delete_patform)
             plat.delete_platform_credentials()
             print(f"platform {delete_patform} deleted successfully\n\n")
         else:
