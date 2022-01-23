@@ -48,3 +48,7 @@ class TestCredentials(unittest.TestCase):
         """test if the generated password length is the one specified"""
         self.assertEqual(len(Credentials.gernerate_password(8)), 8)
 
+
+if __name__ == "__main__":
+    unittest.main()
+
