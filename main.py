@@ -40,6 +40,24 @@ def user_login():
 
     return User.login(username, user_password)
 
+
+def show_password_options():
+    print("Please choose an option to set the password")
+    print("1. Enter your password\n2. Generate a password")
+
+    choice = int(input())
+
+    if choice == 1:
+        print("Enter platform password")
+        password = input()
+
+    else:
+        length = int(input("Please provide the length of the password to be generated"))
+        password = Credetials.gerneratePassword(length)
+        print(f"The generated password is: {password}")
+
+    return password
+
 def display_logged_in_menu():
     print("Please select an option")
     print("1. Save new credentials\n2. Show all saved credentials\n3. Delete credentials\n4. Logout")
@@ -53,11 +71,12 @@ def display_logged_in_menu():
         print("Enter platform username eg john")
         username = input()
 
-        print("Enter platform password")
-        password = input()
+        password = show_password_options()
 
         creds = Credetials(platform, username, password)
         creds.save_platform_credentials()
+
+        print(f"\n\nCredentials for {platform} saved successfully\n\n")
 
     elif choice == 2:
         print("-" * 20 + "Show all saved credentials" + "-"*20)
@@ -72,7 +91,7 @@ def display_logged_in_menu():
         if Credetials.platform_exists(delete_patform):
             plat = Credetials.find_platform_credentials(delete_patform)
             plat.delete_platform_credentials()
-            print(f"platform {delete_patform} deleted successfully")
+            print(f"platform {delete_patform} deleted successfully\n\n")
         else:
             print(f"platform {delete_patform} does not exist!")
 
@@ -118,8 +137,11 @@ def main():
 
             elif choice == 4:
                 break
+            else:
+                raise Exception()
         except:
             print("You selected an invalid option")
+            show_options()
 
 if __name__ == '__main__':
     main()
