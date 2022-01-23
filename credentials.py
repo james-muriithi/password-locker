@@ -45,5 +45,6 @@ class Credentials:
         return "".join(random_string)
 
     def __repr__(self):
+        """format credential print"""
         return f"Platform: {self.platform} Username: {self.username} Password: {self.password}"
 

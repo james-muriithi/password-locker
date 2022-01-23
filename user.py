@@ -39,5 +39,6 @@ class User:
         return cls.user_accounts
 
     def __repr__(self):
+        """format user print"""
         return f'Fullname: {self.first_name} {self.last_name} Username: {self.username}'
 
